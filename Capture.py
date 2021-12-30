@@ -4,7 +4,7 @@ import cv2
 class Capture:
     Is_Color = 0
     Is_videoStop = False
-    VideoFile = "X:\StudyCode\python\Clouds - 35573.mp4"
+    VideoFile = "input Movie Path"
     VideoCount = 0
     vid = None
     texture_data = None

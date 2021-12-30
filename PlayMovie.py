@@ -6,22 +6,22 @@ m_DrawControl = VideoCtrl.DrawControl()
 class DrawWindow():
     def __init__(self):
         dpg.create_context()
-        dpg.create_viewport(max_width=800, max_height=800)
+        dpg.create_viewport(max_width=600, max_height=1000)
         dpg.setup_dearpygui()
 
     def MainWindow(self):
         with dpg.texture_registry(show=False):
             dpg.add_raw_texture(480, 270, m_DrawControl.GetTextureData(), tag="texture_tag", format=dpg.mvFormat_Float_rgb, use_internal_label=False)
 
-        with dpg.window(label="Main window",pos=[100,100]):
+        with dpg.window(label="Main window",pos=[50,10]):
             dpg.add_text(tag="Main Title",default_value=m_DrawControl.InitVideoPath)
             m_DrawControl.selectMovieFlie()
             self.MakeSubWindow()
 
             dpg.add_image("texture_tag")
-            dpg.add_progress_bar(tag="slider",pos=[10,320])
-            dpg.add_text(tag="Time",default_value="0",pos=[350,320])
-            dpg.add_button(label="Save", callback=m_DrawControl.SwitchStopAndStart, pos=[10,350])
+            dpg.add_progress_bar(tag="slider",pos=[10,360])
+            dpg.add_text(tag="Time",default_value="0",pos=[350,360])
+            dpg.add_button(label="Start", tag="StartPause", callback=m_DrawControl.SwitchStopAndStart, pos=[10,380])
 
     def DrawDialog(self):
         with dpg.file_dialog(directory_selector=False, show=False, callback=m_DrawControl.SelectVideo, tag="file_dialog_id"):
@@ -30,7 +30,6 @@ class DrawWindow():
             dpg.add_file_extension("", color=(150, 255, 150, 255))
 
     def ShowWindow(self):
-        dpg.show_metrics()
         dpg.show_viewport()
 
     def DrawMovie(self):

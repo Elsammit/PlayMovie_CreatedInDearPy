@@ -61,6 +61,10 @@ class DrawControl():
     
     def SwitchStopAndStart(self):
         m_Capture.IsStartStop()
+        if m_Capture.Is_videoStop == True:
+            dpg.set_item_label("StartPause","Pause")
+        else:
+            dpg.set_item_label("StartPause","Start")
 
     def GetVideoStopFlg(self):
         return m_Capture.Is_videoStop
